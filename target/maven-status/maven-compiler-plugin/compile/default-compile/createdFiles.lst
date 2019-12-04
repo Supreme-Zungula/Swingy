@@ -1,4 +1,6 @@
+za/co/wethinkcode/heroes/DamageHeroBuilder.class
 za/co/wethinkcode/heroes/TankHeroBuilder.class
+za/co/wethinkcode/heroes/FlankHeroBuilder.class
 za/co/wethinkcode/App.class
 za/co/wethinkcode/interfaces/HeroBuilder.class
 za/co/wethinkcode/heroes/Hero.class
