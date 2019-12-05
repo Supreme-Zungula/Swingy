@@ -1,4 +1,4 @@
-package za.co.wethinkcode.heroes;
+package za.co.wethinkcode.characters;
 
 import za.co.wethinkcode.interfaces.HeroBuilder;
 
@@ -8,16 +8,17 @@ public class TankHeroBuilder implements HeroBuilder{
 
     public TankHeroBuilder() {
         this.tankHero = new Hero();
+        this.tankHero.setHeroID();
     }
 
-    private static int nextID() {
-        return (++idCounter);
-    }
+    // private static int nextID() {
+    //     return (++idCounter);
+    // }
 
-    public void buildHeroID() {
-        int id = nextID();
-        this.tankHero.setHeroID(id);
-    }
+    // public void buildHeroID() {
+    //     int id = nextID();
+    //     this.tankHero.setHeroID(id);
+    // }
 
     public void buildHeroName(String name) {
         this.tankHero.setHeroName(name);
@@ -40,7 +41,7 @@ public class TankHeroBuilder implements HeroBuilder{
     }
 
     public void buildHeroDefense() {
-        this.tankHero.setHeroDefense(1000);
+        this.tankHero.setHeroDefense(2000);
     }
 
     public void buildHeroHitPoints() {

@@ -1,9 +1,8 @@
 package za.co.wethinkcode.interfaces;
 
-import za.co.wethinkcode.heroes.Hero;
+import za.co.wethinkcode.characters.Hero;
 
 public interface HeroBuilder {
-    public void buildHeroID();
     public void buildHeroName(String name);
     public void buildHeroClass();
     public void buildHeroLevel();

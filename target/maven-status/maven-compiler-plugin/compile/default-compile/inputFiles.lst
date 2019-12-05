@@ -1,6 +1,10 @@
-/goinfre/yzungula/Desktop/Sandbox/Java/Swingy/src/main/java/za/co/wethinkcode/heroes/DamageHeroBuilder.java
-/goinfre/yzungula/Desktop/Sandbox/Java/Swingy/src/main/java/za/co/wethinkcode/heroes/FlankHeroBuilder.java
-/goinfre/yzungula/Desktop/Sandbox/Java/Swingy/src/main/java/za/co/wethinkcode/heroes/TankHeroBuilder.java
-/goinfre/yzungula/Desktop/Sandbox/Java/Swingy/src/main/java/za/co/wethinkcode/interfaces/HeroBuilder.java
-/goinfre/yzungula/Desktop/Sandbox/Java/Swingy/src/main/java/za/co/wethinkcode/heroes/Hero.java
-/goinfre/yzungula/Desktop/Sandbox/Java/Swingy/src/main/java/za/co/wethinkcode/App.java
+/goinfre/yzungula/Desktop/Swingy/src/main/java/za/co/wethinkcode/characters/Hero.java
+/goinfre/yzungula/Desktop/Swingy/src/main/java/za/co/wethinkcode/enums/CharacterType.java
+/goinfre/yzungula/Desktop/Swingy/src/main/java/za/co/wethinkcode/characters/DamageHeroBuilder.java
+/goinfre/yzungula/Desktop/Swingy/src/main/java/za/co/wethinkcode/App.java
+/goinfre/yzungula/Desktop/Swingy/src/main/java/za/co/wethinkcode/characters/VillainBuilder.java
+/goinfre/yzungula/Desktop/Swingy/src/main/java/za/co/wethinkcode/factories/CharacterFactory.java
+/goinfre/yzungula/Desktop/Swingy/src/main/java/za/co/wethinkcode/characters/TankHeroBuilder.java
+/goinfre/yzungula/Desktop/Swingy/src/main/java/za/co/wethinkcode/characters/FlankHeroBuilder.java
+/goinfre/yzungula/Desktop/Swingy/src/main/java/za/co/wethinkcode/model/HeroDB.java
+/goinfre/yzungula/Desktop/Swingy/src/main/java/za/co/wethinkcode/interfaces/HeroBuilder.java
