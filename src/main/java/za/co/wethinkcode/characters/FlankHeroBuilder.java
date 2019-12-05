@@ -4,7 +4,6 @@ import za.co.wethinkcode.interfaces.HeroBuilder;
 
 public class FlankHeroBuilder implements HeroBuilder{
     private Hero flankHero;
-    private static int idCounter;
 
     public FlankHeroBuilder() {
         this.flankHero = new Hero();

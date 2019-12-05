@@ -3,62 +3,69 @@ package za.co.wethinkcode.factories;
 import za.co.wethinkcode.characters.Hero;
 import za.co.wethinkcode.characters.DamageHeroBuilder;
 import za.co.wethinkcode.characters.TankHeroBuilder;
+import za.co.wethinkcode.characters.VillainBuilder;
 import za.co.wethinkcode.characters.FlankHeroBuilder;
 import za.co.wethinkcode.enums.CharacterType;
 
-public class CharacterFactory 
-{
+public class CharacterFactory {
     private Hero newCharacter;
-    
-    public CharacterFactory()
-    {
-        newCharacter = new Hero();
+
+    public CharacterFactory() {
     }
 
-    public Hero createCharacter(CharacterType type, String name) throws Exception
-    {
+    public Hero createCharacter(CharacterType type, String name) throws Exception {
+  
         switch (type) {
-            case FLANK:
-                FlankHeroBuilder flankHeroBuilder = new FlankHeroBuilder();
-                flankHeroBuilder.buildHeroID();
-                flankHeroBuilder.buildHeroName(name);
-                flankHeroBuilder.buildHeroAttack();
-                flankHeroBuilder.buildHeroClass();
-                flankHeroBuilder.buildHeroDefense();
-                flankHeroBuilder.buildHeroExperience();
-                flankHeroBuilder.buildHeroHitPoints();
-                flankHeroBuilder.buildHeroLevel();
-                newCharacter = flankHeroBuilder.getHero();
-                return (newCharacter);
+        case FLANK:
+            FlankHeroBuilder flankHeroBuilder = new FlankHeroBuilder();
+            flankHeroBuilder.buildHeroName(name);
+            flankHeroBuilder.buildHeroAttack();
+            flankHeroBuilder.buildHeroClass();
+            flankHeroBuilder.buildHeroDefense();
+            flankHeroBuilder.buildHeroExperience();
+            flankHeroBuilder.buildHeroHitPoints();
+            flankHeroBuilder.buildHeroLevel();
+            newCharacter = flankHeroBuilder.getHero();
+            break;
+        case DAMAGE:
+            DamageHeroBuilder dmgBuilder = new DamageHeroBuilder();
+            dmgBuilder.buildHeroName(name);
+            dmgBuilder.buildHeroAttack();
+            dmgBuilder.buildHeroClass();
+            dmgBuilder.buildHeroDefense();
+            dmgBuilder.buildHeroExperience();
+            dmgBuilder.buildHeroHitPoints();
+            dmgBuilder.buildHeroLevel();
+            newCharacter = dmgBuilder.getHero();
+            break;
 
-            case DAMAGE:
-                DamageHeroBuilder dmgBuilder = new DamageHeroBuilder();
-                dmgBuilder.buildHeroID();
-                dmgBuilder.buildHeroName(name);
-                dmgBuilder.buildHeroAttack();
-                dmgBuilder.buildHeroClass();
-                dmgBuilder.buildHeroDefense();
-                dmgBuilder.buildHeroExperience();
-                dmgBuilder.buildHeroHitPoints();
-                dmgBuilder.buildHeroLevel();
-                newCharacter = dmgBuilder.getHero();
-                return (newCharacter);
-            
-            case TANK:
-                TankHeroBuilder tankBuidler = new TankHeroBuilder();
-                tankBuidler.buildHeroID();
-                tankBuidler.buildHeroName(name);
-                tankBuidler.buildHeroAttack();
-                tankBuidler.buildHeroClass();
-                tankBuidler.buildHeroDefense();
-                tankBuidler.buildHeroExperience();
-                tankBuidler.buildHeroHitPoints();
-                tankBuidler.buildHeroLevel();
-                newCharacter = tankBuidler.getHero();
-                return (newCharacter);
-            
-            default:
-                throw new Exception("ERROR: Invalid character type");
+        case TANK:
+            TankHeroBuilder tankBuidler = new TankHeroBuilder();
+            tankBuidler.buildHeroName(name);
+            tankBuidler.buildHeroAttack();
+            tankBuidler.buildHeroClass();
+            tankBuidler.buildHeroDefense();
+            tankBuidler.buildHeroExperience();
+            tankBuidler.buildHeroHitPoints();
+            tankBuidler.buildHeroLevel();
+            newCharacter = tankBuidler.getHero();
+            break;
+        
+        case VILLAIN:
+            VillainBuilder villainBuidler = new VillainBuilder();
+            villainBuidler.buildHeroName(name);
+            villainBuidler.buildHeroAttack();
+            villainBuidler.buildHeroClass();
+            villainBuidler.buildHeroDefense();
+            villainBuidler.buildHeroExperience();
+            villainBuidler.buildHeroHitPoints();
+            villainBuidler.buildHeroLevel();
+            newCharacter = villainBuidler.getHero();
+            break;
+
+        default:
+            throw new Exception("ERROR: Invalid character type");
         }
+        return (newCharacter);
     }
 }

@@ -4,21 +4,11 @@ import za.co.wethinkcode.interfaces.HeroBuilder;
 
 public class TankHeroBuilder implements HeroBuilder{
     private Hero tankHero;
-    private static int idCounter;
 
     public TankHeroBuilder() {
         this.tankHero = new Hero();
         this.tankHero.setHeroID();
     }
-
-    // private static int nextID() {
-    //     return (++idCounter);
-    // }
-
-    // public void buildHeroID() {
-    //     int id = nextID();
-    //     this.tankHero.setHeroID(id);
-    // }
 
     public void buildHeroName(String name) {
         this.tankHero.setHeroName(name);
@@ -49,6 +39,7 @@ public class TankHeroBuilder implements HeroBuilder{
     }
 
     public Hero getHero() {
+        System.out.println(tankHero);
         return (this.tankHero);
     }
 }

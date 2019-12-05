@@ -24,7 +24,7 @@ public class Hero implements Serializable{
     @Column(name="heroID")
     private  Integer heroID;
 
-	private static Integer idCounter;
+	private static Integer idCounter = 0;
 	
 	/* Hero name */
 	@Getter
@@ -54,6 +54,8 @@ public class Hero implements Serializable{
 	private int						heroExperience;
 	
 	/* Hero attack power */
+	@Getter
+	@Setter                                                                                                             
 	@Range(min = 100, max = 1500)
 	private int						heroAttack;
 	
@@ -77,6 +79,11 @@ public class Hero implements Serializable{
 		this.heroID = ++idCounter;
 	}
 	
+	public Integer getHeroID()
+	{
+		return (this.heroID);
+	}
+
 	@Override
 	public String toString() {
 		String details = "ID: " + this.getHeroID() +

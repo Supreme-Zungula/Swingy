@@ -4,7 +4,6 @@ import za.co.wethinkcode.interfaces.HeroBuilder;
 
 public class DamageHeroBuilder implements HeroBuilder{
     private Hero damageHero;
-    private static int idCounter;
 
     public DamageHeroBuilder() {
         this.damageHero = new Hero();

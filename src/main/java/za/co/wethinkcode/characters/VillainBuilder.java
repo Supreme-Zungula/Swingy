@@ -24,13 +24,13 @@ public class VillainBuilder implements HeroBuilder
     }
 
     public void buildHeroLevel() {
-        int level = randNumGenerator.nextInt(100) + 1;
+        int level = randNumGenerator.nextInt(5) + 1;
         this.villainHero.setHeroLevel(level);
     }
 
     public void buildHeroExperience() {
         int exp = randNumGenerator.nextInt(100) + 1;
-        this.villainHero.setHeroExperience(exp * 100);
+        this.villainHero.setHeroExperience(exp);
     }
 
     public void buildHeroAttack() {
