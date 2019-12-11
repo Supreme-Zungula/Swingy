@@ -1,16 +1,16 @@
 package za.co.wethinkcode.characters;
 
 import javax.persistence.*;
+import javax.swing.text.Position;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-
 import org.hibernate.validator.constraints.Range;
-
 import java.io.Serializable;
-import lombok.Getter;
 import lombok.NonNull;
+import lombok.Getter;
 import lombok.Setter;
+import za.co.wethinkcode.model.Coordinates;;
 
 @Entity
 @Table(name = "heroes")
@@ -71,6 +71,10 @@ public class Hero implements Serializable{
 	@Range(min =  2000, max = 5000)
 	private int						heroHitPoints;
 
+	/* Hero's position on the map */
+	@Getter
+	@Setter
+	Coordinates position;
 	/**
 	 * sets heroID to the private static idCounter
 	 */
