@@ -5,35 +5,17 @@ import za.co.wethinkcode.model.Game;
 import za.co.wethinkcode.characters.Hero;
 import za.co.wethinkcode.enums.CharacterType;
 import za.co.wethinkcode.factories.CharacterFactory;
+import java.util.Random;
 
 public class GameController {
-    private Game game;
 
     public GameController() {
-        this.game = new Game();
     }
 
-    public void addHero(Hero hero) {
-        this.game.setHero(hero);
-    }
-
-    public void makeMap(Hero hero) {
-        this.game.generateMap(hero);
-    }
-
-    public void displayMap() {
-        this.game.displayMap();
-    }
-
-    public void addCharacterToGame(Hero character) {
-        this.game.addCharacterToMap(character);
-    }
-
-    public Hero makeHero() throws Exception {
+    public Hero makeHero(CharacterType type) throws Exception {
         CharacterFactory factory = new CharacterFactory();
         Scanner scanner = new Scanner(System.in);
         String userInput;
-        CharacterType type = this.chooseHeroClass();
 
         while (true) {
             System.out.println("Enter your hero's name:");
@@ -46,63 +28,59 @@ public class GameController {
         }
     }
 
-    public CharacterType chooseHeroClass() {
-        Scanner scanner = new Scanner(System.in);
-        String input;
-        int choice;
+    
+    public int combat(Hero hero, Hero villainHero) {
+        // int result = -1;
+        int heroHP = hero.getHeroHitPoints();
+        int heroShield = hero.getHeroDefense();
+        int heroAttack = hero.getHeroAttack();
+        int villainAttack = villainHero.getHeroAttack();
+        int villainShield = villainHero.getHeroDefense();
+        int villainHP = villainHero.getHeroHitPoints();
+        Random randomiser = new Random();
+        int luckIndex;
 
         while (true) {
-            System.out.println("Choose a hero class.");
-            System.out.println("1. Damage class");
-            System.out.println("2. Flank class");
-            System.out.println("3. Tank class");
-
-            input = scanner.nextLine();
-            try {
-                choice = Integer.parseInt(input);
-                switch (choice) {
-                case 1:
-                    return (CharacterType.DAMAGE);
-                case 2:
-                    return (CharacterType.FLANK);
-                case 3:
-                    return (CharacterType.TANK);
-                default:
-                    System.out.println("Voetsek wena! can't you see the options you were given?");
+            luckIndex = randomiser.nextInt(5);
+            System.out.println("HERO STATS:");
+            System.out.println(hero);
+            System.out.println("VILLAIN STATS:");
+            System.out.println(villainHP);
+            if ((luckIndex % 2) == 0) {
+                if (villainShield > 0) {
+                    heroAttack -= villainAttack;
+                    villainHero.setHeroDefense(villainShield - heroAttack);
+                    if (heroAttack > 0) {
+                        villainHero.setHeroHitPoints(villainHP - heroAttack);
+                        villainHP -= heroAttack;
+                        // System.out.println("villain HP: " + villainHP);
+                    }
                 }
-            } catch (Exception ex) {
-                System.out.println("Voetsek choose again you fool.");
-            }
+                else {
+                    villainHP -= heroAttack;
+                    // System.out.println("villain HP: " + villainHP);
+                }
+           }
+           else {
+                if (heroShield > 0) {
+                    villainAttack -= villainAttack;
+                    if (villainAttack > 0) {
+                        heroHP -= villainAttack;
+                        // System.out.println("Hero HP: " + heroHP);
+                    }
+                }
+                else {
+                    heroHP -= villainAttack;
+                    // System.out.println("Hero HP: " + heroHP);
+                }
+           }
+           if (heroHP <= 0) {
+               return (0);
+           }
+           if (villainHP <= 0) {
+             return (1);
+           }
         }
     }
 
-    public void runGame() {
-        Scanner scanner = new Scanner(System.in);
-        int choice;
-        String input;
-        while (true) {
-            System.out.println("Enter a number corresponding to your choice.");
-            System.out.println("1. Pick character from database.");
-            System.out.println("2. Make your own character.");
-            input = scanner.nextLine();
-            try {
-                choice = Integer.parseInt(input);
-                if (choice == 1) {
-                    System.out.println("choose a character from the list below.");
-                    break;
-                } else if (choice == 2) {
-                    System.out.println("Make your own character.");
-                    System.out.println(makeHero());
-                    break;
-                } else {
-                    System.out.println("Voetsek satan. Can't you read instructions?");
-                    break;
-                }
-            } catch (Exception ex) {
-                System.out.println(ex.getMessage());
-                System.out.println("Voetsek satan. Can't you read instructions?");
-            }
-        }
-        scanner.close();
-    }
 }

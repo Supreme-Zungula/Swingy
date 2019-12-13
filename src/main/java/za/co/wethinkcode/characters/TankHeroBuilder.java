@@ -39,7 +39,6 @@ public class TankHeroBuilder implements HeroBuilder{
     }
 
     public Hero getHero() {
-        System.out.println(tankHero);
         return (this.tankHero);
     }
 }
