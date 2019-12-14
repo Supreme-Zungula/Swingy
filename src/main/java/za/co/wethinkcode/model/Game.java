@@ -56,7 +56,7 @@ public class Game {
         } else {
             for (int h = 0; h < this.mapHeight; h++) {
                 for (int w = 0; w < this.mapWidth; w++) {
-                    System.out.print(map[w][h]);
+                    System.out.print(map[w][h] + " ");
                 }
                 System.out.println();
             }

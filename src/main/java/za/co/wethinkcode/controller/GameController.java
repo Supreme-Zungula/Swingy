@@ -1,15 +1,21 @@
 package za.co.wethinkcode.controller;
 
+import java.util.Random;
+// import antlr.collections.List;
 import java.util.Scanner;
+import java.util.List;
+
 import za.co.wethinkcode.model.Game;
 import za.co.wethinkcode.characters.Hero;
 import za.co.wethinkcode.enums.CharacterType;
 import za.co.wethinkcode.factories.CharacterFactory;
-import java.util.Random;
+import za.co.wethinkcode.model.DatabaseMethods;
 
 public class GameController {
+    private DatabaseMethods dbManager;
 
     public GameController() {
+        dbManager = new DatabaseMethods();
     }
 
     public Hero makeHero(CharacterType type) throws Exception {
@@ -28,6 +34,9 @@ public class GameController {
         }
     }
 
+    public List<Hero> getHeroesFromDB() {
+        return (this.dbManager.selectAll());
+    }
     
     public int combat(Hero hero, Hero villainHero) {
         // int result = -1;

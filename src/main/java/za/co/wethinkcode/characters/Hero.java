@@ -10,6 +10,7 @@ import java.io.Serializable;
 import lombok.NonNull;
 import lombok.Getter;
 import lombok.Setter;
+import net.bytebuddy.implementation.bind.annotation.Default;
 import za.co.wethinkcode.model.Coordinates;;
 
 @Entity
@@ -45,7 +46,7 @@ public class Hero implements Serializable{
 	@Getter
 	@Setter
 	@Range(min = 1, max = 100)
-	private int						heroLevel;
+	private int						heroLevel = 1;
 	
 	/* Hero experience */
 	@Getter

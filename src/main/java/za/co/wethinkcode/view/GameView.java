@@ -24,6 +24,7 @@ public class GameView
         Scanner scanner = new Scanner(System.in);
         int choice;
         String input;
+
         while (true) {
             System.out.println("Enter a number corresponding to your choice.");
             System.out.println("1. Pick character from database.");
@@ -33,6 +34,8 @@ public class GameView
                 choice = Integer.parseInt(input);
                 if (choice == 1) {
                     System.out.println("choose a character from the list below.");
+                    villainsList = this.gameController.getHeroesFromDB();
+                    chooseHero();
                     break;
                 } 
                 else if (choice == 2) {
@@ -83,9 +86,12 @@ public class GameView
         }
     }
     
-   /*  public void addHero(Hero hero) {
-        this.game.setHero(hero);
-    } */
+    public void chooseHero() {
+        for (Hero hero : villainsList) {
+            System.out.println(hero);
+            System.out.println();
+        }
+    }
 
     public void addCharacterToGame(Hero character) {
         this.game.addCharacterToMap(character);
