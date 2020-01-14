@@ -160,7 +160,7 @@ public class DatabaseMethods {
 		}
 	}
 
-    public Hero getHerodb(int id) {
+    public Hero getHeroFromDB(String name) {
 		int heroLvl, heroExp, heroHP, heroAtk, heroDef;
 		String heroName, heroClass;
 		CharacterFactory characterFactory = new CharacterFactory();
@@ -168,7 +168,7 @@ public class DatabaseMethods {
 
         DatabaseManager dbManager = new DatabaseManager();
 
-		String sql = "SELECT * FROM heroes WHERE heroID = '" + id + "'";
+		String sql = "SELECT * FROM heroes WHERE heroName = '" + name + "'";
 		
 		try{
             Connection conn = dbManager.connect();

@@ -38,6 +38,9 @@ public class GameController {
         return (this.dbManager.selectAll());
     }
     
+    public Hero getHeroFromDB(String name) {
+        return (this.dbManager.getHeroFromDB(name));
+    }
     public int combat(Hero hero, Hero villainHero) {
         // int result = -1;
         int heroHP = hero.getHeroHitPoints();

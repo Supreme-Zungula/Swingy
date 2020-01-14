@@ -1,20 +1,34 @@
 package za.co.wethinkcode;
 
-import java.util.Scanner;
+// import java.util.Scanner;
+import java.util.ArrayList;
 import za.co.wethinkcode.model.DatabaseMethods;
 import za.co.wethinkcode.characters.Hero;
 import za.co.wethinkcode.enums.CharacterType;
 import za.co.wethinkcode.factories.CharacterFactory;
-// import za.co.wethinkcode.model.Game;
 import za.co.wethinkcode.view.GameView;
-// import za.co.wethinkcode.controller.GameController;;
+
 /**
  * Swingy
  *
  */
 public class App 
 {
-    private static Scanner scanner;
+    public static ArrayList<Hero> makeVillains() {
+        ArrayList<Hero> villainsList = new ArrayList<>();
+        CharacterFactory characterFactory = new CharacterFactory();
+
+        try {
+            for (int i =0; i < 10; i++) {
+                villainsList.add(characterFactory.createCharacter(CharacterType.VILLAIN, "Villain" + 1));
+            }
+        }
+        catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return (villainsList);
+    }
     public static void main( String[] args )
     {
         System.out.println("*********************************************");
@@ -24,46 +38,33 @@ public class App
         System.out.println("*********************************************");
 
         CharacterFactory characterFactory = new CharacterFactory();
-        Hero dps;
-        Hero tank;
-        Hero flank;
-        Hero villain;
-        // Game game = new Game();
-        // GameController gameController = new GameController();
+        Hero hero;
+        ArrayList<Hero> villains;
         GameView gameView = new GameView();
+        char[][] map;
         DatabaseMethods dbMethods = new DatabaseMethods();
+        int choice = 0;
 
         dbMethods.createDb();
         dbMethods.createTable();
 
         try {
-            tank = characterFactory.createCharacter(CharacterType.TANK,  "Devotion");
-            dps = characterFactory.createCharacter(CharacterType.DAMAGE, "Kraber");
-            flank = characterFactory.createCharacter(CharacterType.FLANK, "Wingman");
-            villain = characterFactory.createCharacter(CharacterType.DAMAGE, "Havoc");
-            
-            // dbMethods.addHero(tank);
-            // dbMethods.addHero(flank);
-            // dbMethods.addHero(dps);
-            // dbMethods.addHero(villain);
-            // dbMethods.selectAll();
-            // dbMethods.showAll();
-            
-            gameView.getUserInput();
-            gameView.makeMap(tank);
-            gameView.displayMap();
-
+            villains = makeVillains();
+            choice = gameView.userChoice();
+            if (choice == 1) {
+                gameView.displayHeroes();
+                hero = gameView.chooseHero();
+                System.out.println("\nYou chose the following hero:\n");
+                System.out.println(hero);
+            }
+            else {
+                hero = gameView.makeHero();
+                System.out.println("Here is your hero details:");
+                System.out.println(hero);
+            }
         }
         catch(Exception ex){
             System.out.println(ex.getMessage());
         }
     }
-
-    public static Scanner getScanner() {
-        if(scanner != null)
-           return scanner;
-        scanner = new Scanner(System.in);
-        return scanner;
-    }
-
 }

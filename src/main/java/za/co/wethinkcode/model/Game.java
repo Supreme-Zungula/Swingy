@@ -19,7 +19,7 @@ public class Game {
     char[][] map;
     int mapHeight;
     int mapWidth;
-    
+
     @Getter
     Hero hero;
 
@@ -32,8 +32,7 @@ public class Game {
 
         if (this.hero == null) {
             this.hero = newHero;
-        }
-        else {
+        } else {
             System.out.println("There is already a hero in the game.");
         }
     }
@@ -63,12 +62,22 @@ public class Game {
         }
     }
 
-    public void addVillain(Hero villainHero)
-    {
+    public char[][] getMap() {
+        return(this.map);
+    } 
+
+    public int getMapHeight() {
+        return (this.mapHeight);
+    }
+
+    public int getMapWidth() {
+        return (this.mapWidth);
+    }
+
+    public void addVillain(Hero villainHero) {
         if (villainsList.contains(villainHero)) {
             System.out.println("This villain has already been added.");
-        }
-        else {
+        } else {
             villainsList.add(villainHero);
         }
     }
@@ -76,22 +85,26 @@ public class Game {
     public List<Hero> getVillains() {
         return (this.villainsList);
     }
-    
-    public void addCharacterToMap(Hero character) {
 
+    public void addCharacterToMap(Hero character) {
         Random random = new Random();
         char value;
 
         if (character.getHeroClass().equals("Villain")) {
             value = 'V';
         } else {
+            int y = this.mapHeight / 2;
+            int x = this.mapWidth / 2;
             value = 'H';
+            
+            this.map[x][y] = value;
+            return;
         }
 
         while (true) {
             int x = random.nextInt(this.mapWidth);
             int y = random.nextInt(this.mapHeight);
-            if (x == 0){
+            if (x == 0) {
                 x += 1;
             }
             if (x == this.mapWidth) {
